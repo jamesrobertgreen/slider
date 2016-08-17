@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AngularJS puzzle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/slidingPuzzle.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css" /> </head>
+
+<body ng-app="puzzleApp">
+    <div ng-include="'sliding-puzzle'"></div>
+    <div id="sliding-advanced" ng-controller="slidingAdvancedCtrl">
+        <h2>Sliding Puzzle</h2>
+        <div class="status"> moves: <strong>{{puzzle.api.moves}}</strong>
+            <br/> solved: <strong>{{puzzle.api.isSolved()}}</strong> rows:
+            <input type="text" ng-model="puzzle.rows" size="2" /> cols:
+            <input type="text" ng-model="puzzle.cols" size="2" />
+
+            <button ng-click="puzzle.api.shuffle()">shuffle</button>
+            <button ng-click="puzzle.api.solve()">solve</button>
+        </div>
+        <sliding-puzzle api="puzzle.api" size="{{puzzle.rows}}x{{puzzle.cols}}" src="{{puzzle.src}}"></sliding-puzzle>
+    </div>
+</body>
+
+</html>
